@@ -1,19 +1,37 @@
 package fr.letroll.rxsample;
 
-import android.app.Activity;
+import android.app.ListActivity;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
-public class MyActivity extends Activity {
+public class MyActivity extends ListActivity {
+    private String[] examples;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        examples = new String[] { "TheSimplestExample"};
+
+        // Assign adapter to List
+        setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, examples));
     }
 
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName(getPackageName(),getPackageName()+"."+getListAdapter().getItem(position)));
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
