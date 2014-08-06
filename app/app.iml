@@ -61,6 +61,13 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 20 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="retrofit-1.6.1" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
+    <orderEntry type="library" exported="" name="okhttp-1.6.0" level="project" />
+    <orderEntry type="library" exported="" name="okhttp-urlconnection-1.6.0" level="project" />
+    <orderEntry type="library" exported="" name="rxjava-core-0.20.0-RC4" level="project" />
+    <orderEntry type="library" exported="" name="rxjava-android-0.20.0-RC4" level="project" />
+    <orderEntry type="library" exported="" name="butterknife-5.1.2" level="project" />
   </component>
 </module>
 

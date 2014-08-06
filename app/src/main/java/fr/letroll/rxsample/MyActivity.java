@@ -19,7 +19,7 @@ public class MyActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        examples = new String[] { "TheSimplestExample"};
+        examples = new String[] { "TheSimplestExample" , "RetrofitExample"};
 
         // Assign adapter to List
         setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, examples));

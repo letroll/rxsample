@@ -40,12 +40,14 @@ public class TheSimplestExample extends Activity{
 
     @Override
     protected void onDestroy() {
-        currentTime.unsubscribeOn(AndroidSchedulers.mainThread());
         super.onDestroy();
+        currentTime.unsubscribeOn(AndroidSchedulers.mainThread());
+        ButterKnife.reset(this);
     }
 
     private Observable<Time> getTimeObservable(){
         Time time = new Time(Time.getCurrentTimezone());
+//        return Observable.Timer(TimeSpan.Fr)
         return Observable.just(time, AndroidSchedulers.mainThread());
     }
 
@@ -54,6 +56,7 @@ public class TheSimplestExample extends Activity{
             @Override
             public void call(Time time) {
                 time.setToNow();
+                if(tv_simplest_example!=null)
                 tv_simplest_example.setText(time.format("%k:%M:%S"));
                 ObserveTime();
             }
