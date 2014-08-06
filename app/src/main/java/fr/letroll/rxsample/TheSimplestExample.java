@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.format.Time;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import rx.Observable;
@@ -22,19 +24,19 @@ public class TheSimplestExample extends Activity{
     public final static String TAG = "TheSimplestExample";
 
     /** OBJECTS **/
-    private Observable<Time> currentTime;
-
+    private Observable<Long> currentTime;
+    private Time time;
     /** VIEWS **/
     @InjectView(R.id.tv_simplest_example)
     TextView tv_simplest_example;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_the_simplest_example);
         ButterKnife.inject(this);
-        currentTime=getTimeObservable();
+
+        time = new Time(Time.getCurrentTimezone());
         ObserveTime();
     }
 
@@ -45,20 +47,18 @@ public class TheSimplestExample extends Activity{
         ButterKnife.reset(this);
     }
 
-    private Observable<Time> getTimeObservable(){
-        Time time = new Time(Time.getCurrentTimezone());
-//        return Observable.Timer(TimeSpan.Fr)
-        return Observable.just(time, AndroidSchedulers.mainThread());
+    private Observable<Long> getTimeObservable(){
+        return Observable.interval(1, TimeUnit.SECONDS,AndroidSchedulers.mainThread());
     }
 
     private void ObserveTime(){
-        currentTime.subscribe(new Action1<Time>() {
+        currentTime=getTimeObservable();
+        currentTime.subscribe(new Action1<Long>() {
             @Override
-            public void call(Time time) {
+            public void call(Long aLong) {
                 time.setToNow();
                 if(tv_simplest_example!=null)
-                tv_simplest_example.setText(time.format("%k:%M:%S"));
-                ObserveTime();
+                    tv_simplest_example.setText(time.format("%k:%M:%S"));
             }
         });
     }
