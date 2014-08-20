@@ -42,9 +42,9 @@ public class TheSimplestExample extends Activity{
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         currentTime.unsubscribeOn(AndroidSchedulers.mainThread());
         ButterKnife.reset(this);
+        super.onDestroy();
     }
 
     private Observable<Long> getTimeObservable(){

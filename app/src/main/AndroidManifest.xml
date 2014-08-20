@@ -24,6 +24,10 @@
             android:name=".RetrofitExample"
             android:label="@string/title_activity_retrofit_example" >
         </activity>
+        <activity
+            android:name=".RetrofitRetry"
+            android:label="@string/title_activity_retrofit_example" >
+        </activity>
     </application>
 
 </manifest>
