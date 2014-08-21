@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import rx.Observable;
+import rx.Subscription;
+import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -25,7 +27,9 @@ public class TheSimplestExample extends Activity{
 
     /** OBJECTS **/
     private Observable<Long> currentTime;
+    private Subscription subscription;
     private Time time;
+
     /** VIEWS **/
     @InjectView(R.id.tv_simplest_example)
     TextView tv_simplest_example;
@@ -42,9 +46,9 @@ public class TheSimplestExample extends Activity{
 
     @Override
     protected void onDestroy() {
-        currentTime.unsubscribeOn(AndroidSchedulers.mainThread());
-        ButterKnife.reset(this);
         super.onDestroy();
+        subscription.unsubscribe();
+        ButterKnife.reset(this);
     }
 
     private Observable<Long> getTimeObservable(){
@@ -53,7 +57,7 @@ public class TheSimplestExample extends Activity{
 
     private void ObserveTime(){
         currentTime=getTimeObservable();
-        currentTime.subscribe(new Action1<Long>() {
+        subscription= AndroidObservable.bindActivity(this, currentTime).subscribe(new Action1<Long>() {
             @Override
             public void call(Long aLong) {
                 time.setToNow();
