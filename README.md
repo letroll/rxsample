@@ -7,9 +7,11 @@ I start in learning the use of rxjava and decided to share my experiences
 
 ## Use case ##
 
-Interval Operator
-Timer Operator
+### Operator
+* Interval 
+* Timer 
 
-http request with retrofit
-http request with retrofit with a retry
+### Concrete case
+* http request with retrofit
+* http request with retrofit with a retry
  
