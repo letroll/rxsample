@@ -18,12 +18,12 @@ import rx.functions.Action1;
 /**
  * Created by jquievreux on 16/07/2014.
  */
-public class TheSimplestExample extends Activity{
+public class Interval extends Activity{
 
     /**
      * VARIABLES *
      */
-    public final static String TAG = "TheSimplestExample";
+    public final static String TAG = "Interval";
 
     /** OBJECTS **/
     private Observable<Long> currentTime;

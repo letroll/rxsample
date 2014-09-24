@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="fr.letroll.rxsample.TheSimplestExample" />
+        <activity android:name=".Interval" />
         <activity
             android:name="fr.letroll.rxsample.RetrofitExample"
             android:label="@string/title_activity_retrofit_example" >
