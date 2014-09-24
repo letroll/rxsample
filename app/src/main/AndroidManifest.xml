@@ -2,16 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.letroll.rxsample" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
-            android:name=".MyActivity"
+            android:name="fr.letroll.rxsample.MyActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,14 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TheSimplestExample" />
+        <activity android:name="fr.letroll.rxsample.TheSimplestExample" />
         <activity
-            android:name=".RetrofitExample"
+            android:name="fr.letroll.rxsample.RetrofitExample"
             android:label="@string/title_activity_retrofit_example" >
         </activity>
         <activity
-            android:name=".RetrofitRetry"
+            android:name="fr.letroll.rxsample.RetrofitRetry"
             android:label="@string/title_activity_retrofit_example" >
+        </activity>
+        <activity
+            android:name="fr.letroll.rxsample.Timer"
+            android:label="@string/title_activity_timer" >
         </activity>
     </application>
 
